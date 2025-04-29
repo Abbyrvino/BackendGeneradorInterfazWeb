@@ -36,6 +36,12 @@ const startServer = async () => {
     await sequelize.sync({ alter: true, logging: false });
     console.log('📦 Modelos sincronizados correctamente');
 
+    const { initRoles } = await import('./initRoles.js');
+    await initRoles();
+    
+    const { initDefaultUser } = await import('./initDefaultUser.js');
+    await initDefaultUser();
+
     ////////////////////////////
     const server = http.createServer(app);
 
