@@ -49,7 +49,7 @@ export const login = async (req, res) => {
           name: user.name,
         },
         process.env.JWT_SECRET,
-        { expiresIn: process.env.JWT_EXPIRES_IN }
+        {expiresIn: process.env.JWT_EXPIRES_IN || "1d" }
       );
   
       // Respuesta con token

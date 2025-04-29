@@ -38,10 +38,11 @@ const startServer = async () => {
 
     const { initRoles } = await import('./initRoles.js');
     await initRoles();
-    
+
     const { initDefaultUser } = await import('./initDefaultUser.js');
     await initDefaultUser();
 
+    
     ////////////////////////////
     const server = http.createServer(app);
 
