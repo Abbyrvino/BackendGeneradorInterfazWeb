@@ -26,16 +26,15 @@ const startServer = async () => {
     await sequelize.authenticate();
     console.log('✅ Conexión exitosa con PostgreSQL');
 
+     // ✅ PASO IMPORTANTE: importar modelos y relaciones antes del sync
+     console.log('📂 Importando modelos...');
+     await import('./models/index.js'); // <- ESTA LÍNEA ES CRÍTICA
+     console.log('📂 Modelos importados correctamente');
+
+
     console.log('🔄 Sincronizando modelos de base de datos...');
     await sequelize.sync({ alter: true, logging: false });
     console.log('📦 Modelos sincronizados correctamente');
-
-
-
-
-    //////////////////////////////
-   
-
 
     ////////////////////////////
     const server = http.createServer(app);
